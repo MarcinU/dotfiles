@@ -30,8 +30,11 @@ command Wq wq
 
  " :W sudo saves the file 
  " (useful for handling the permission-denied error)
- command W w !sudo tee % > /dev/null
+command W w !sudo tee % > /dev/null
 
+set pastetoggle=<F3>
+
+set nu
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
