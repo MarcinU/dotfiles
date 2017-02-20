@@ -3,7 +3,7 @@
 # Standard set of tweaks and aliases 
 #
 #
-#
+##################################################################
 
 ##################################################################
 # Basics
@@ -27,8 +27,10 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-
 export EDITOR=vi
+
+# Get system type 
+export system=$(uname -s)
 
 ##################################################################
 # Basic aliases
@@ -63,7 +65,7 @@ fi
 # Linux specific
 ##################################################################
 
-if [ $(uname -s) = "Linux" ]; then
+if [ $system = "Linux" ]; then
 
 # Bash completion
 if [ -f /etc/bash_completion ]; then
@@ -78,8 +80,7 @@ fi
 # MacOS specific
 ##################################################################
 
-if [ $(uname -s) = "Darwin" ];then 
-export system=macOS
+if [ $system = "Darwin" ];then 
 
 #Bash completition
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
