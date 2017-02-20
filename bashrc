@@ -88,7 +88,10 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 #iTerm2 integration
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+if [ -f ${HOME}/.iterm2_shell_integration.bash ]; then 
+   source ${HOME}/.iterm2_shell_integration.bash
+fi
+#test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 # End of MacOs Specific
 fi
