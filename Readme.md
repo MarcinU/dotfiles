@@ -5,7 +5,10 @@ The dot-files can be automaticaly installed using the install-files.bsh script.
 
 ## Usage
 The following parameters can be used now:
- screen - for .screenrc
- bash - for bashrc
- vim - for vimrc
- all - for all above
+
+- screen - for .screenrc
+- bash - for bashrc
+- vim - for vimrc
+- all - for all above
+
+
