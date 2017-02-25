@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# 
+# Basic dot-files installation script 
+#########################################
+ 
+#set -x 
+
+#
+# Setting global variables
+#
+
+repo_dir=$(pwd)
+
+# Using standard home dir (no trailing slash)
+home_dir=$HOME
+
+timestamp=$(date +%Y-%m-%d_%H%M)
+params=$1
+#
+# All the magic and spells
+#
+
+function check_rc {
+    rc=$1
+    if [[ $rc != 0 ]]; then
+        echo "Ooops! Something went wrong"
+        exit $rc
+    fi
+}
+
+function install { 
+    file=$1
+    src="$repo_dir/$file"
+    dst="$home_dir/.$file"
+
+    # Basic check if the file is there
+    if [ -f $dst ] || [ -L $dst ] || [ -d $dst ]; then
+        echo "File/directory .$file is alredy there, do you wish to overwrite? (y/n)"
+        read ret
+        ret=$(echo $ret | tr '[:upper:]' '[:lower:]')
+        if [[ $ret = "y" ]] ; then
+            echo "Making a backup copy" 
+            mv $dst $dst.backup
+            check_rc $?
+            echo "Setting the link"
+            ln -s $src $dst
+            check_rc $?
+        else 
+            echo "Nothing was overwritten"
+            #exit 0
+       fi
+       else 
+           echo "Target dotfile do not exist. Setting the link"
+            echo "Setting the link"
+            ln -s $src $dst
+            check_rc $?
+    fi
+
+    unset file dst src
+}
+
+function install-all {
+	for i in bashrc vimrc screenrc; do 
+		install-file $i
+	done
+}
+
+function usage {
+    echo -en "The following parameters can be used now: \n screen - for .screenrc \n bash - for bashrc \n vim - for vimrc \n all - for all above \n "
+}
+
+
+case "$1" in
+    bash) install bashrc;;
+    vim) install vimrc && install vim;;
+    screen) install screenrc ;;
+    all) install-all;;
+    *) usage "bad argument $1";;
+esac
+
