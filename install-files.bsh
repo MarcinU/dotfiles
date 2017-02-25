@@ -48,7 +48,6 @@ function install {
             check_rc $?
         else 
             echo "Nothing was overwritten"
-            #exit 0
        fi
        else 
            echo "Target dotfile do not exist. Setting the link"
