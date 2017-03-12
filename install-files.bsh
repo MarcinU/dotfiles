@@ -61,7 +61,7 @@ function install {
 
 function install-all {
 	for i in bashrc vimrc screenrc; do 
-		install-file $i
+		install $i
 	done
 }
 
