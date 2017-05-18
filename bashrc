@@ -93,6 +93,9 @@ if [ -f ${HOME}/.iterm2_shell_integration.bash ]; then
 fi
 #test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+# ~/bin to $PATH
+export PATH=~/bin:$PATH
+
 # End of MacOs Specific
 fi
 
