@@ -124,18 +124,21 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
+"   colorscheme desert
    colorscheme solarized
    catch
 endtry
 
 " Set color based on time
-let hour = strftime("%H")
-if 7 <= hour && hour < 21
-    set background=light
-else 
-    set background=dark
-endif
+"let hour = strftime("%H")
+"if 7 <= hour && hour < 21
+"    set background=light
+"else 
+"    set background=dark
+"endif
 
+" Always dark :]
+    set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")

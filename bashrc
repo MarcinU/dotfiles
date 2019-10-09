@@ -95,7 +95,6 @@ fi
 
 # ~/bin to $PATH
 export PATH=~/bin:$PATH
-alias fff="docker run -d --rm  -p 10000:10000 beli/firefox-flash && xpra attach tcp:localhost:10000"
 # End of MacOs Specific
 fi
 
